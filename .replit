@@ -1,2 +1,2 @@
-language = "bash"
-run = "echo hello word"
+languge = "bash"
+run="python main.py"
