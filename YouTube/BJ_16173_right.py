@@ -14,51 +14,6 @@
 
 # 출력) ‘쩰리’가 끝 점에 도달할 수 있으면 “HaruHaru”(인용부호 없이), 도달할 수 없으면 “Hing” (인용부호 없이)을 한 줄에 출력합니다.
 
-from collections import deque
-
-def path_find(x, y):
-  #큐 생성하고 시작 위치 삽입
-  queue = deque()
-  queue.append((x,y))
-  #큐가 빌 때 까지 탐색
-  while queue:
-  #현 좌표의 이동횟수 만큼 이동
-    x, y = queue.popleft() #현재 좌표
-    print(x, y)
-    m = map_info[x][y] #현재 좌표에 적힌 이동횟수
-    if m == -1:
-      return -1
-    if m == 0:
-      continue
-  # #가능한 이동 경로 확인
-    for i in range(m+1): #이동경우의 수는 m+1만큼 이니까
-  #각 경우에 대해 이동후 좌표 계산
-      nx = x + (i*dx[0]) + ((m-i)*dx[1])
-      ny = y + (i*dy[0]) + ((m-i)*dy[1])   
- 
-  # 이동한 좌표가 범위를 벗어나면 스킵
-      if 0 <= nx < n and 0 <= ny < n:
-        queue.append((nx, ny))
-
-  return 0
-
-n = int(input())
-
-map_info = []
-for i in range(n):
-  map_info.append(list(map(int, input().split())))
-
-  #이동좌표_우 하
-dx = [0, 1] #행
-dy = [1, 0] #열
-
-if path_find(0,0) == -1:
-  print('HaruHaru')
-else:
-  print('Hing')
-
-
-
 
 
 n = int(input())

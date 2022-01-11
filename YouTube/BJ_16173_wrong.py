@@ -58,32 +58,3 @@ else:
   print('Hing')
 
 
-
-
-
-n = int(input())
-l = []
-for i in range(n):
-    l.append(list(map(int, input().split())))
-
-
-def finder(x, y, gap):
-
-    if gap == -1:
-        print("HaruHaru")
-        exit(0)
-    if gap == 0:
-      print("Hing")
-      exit(0)
-    if 0 <= x+gap < n:
-      print("down: 현재 좌표", x+gap, y)
-      finder(x+gap, y, l[x+gap][y])  # down
-    if 0 <= y+gap < n:
-      print("right: 현재 좌표", x, y+gap)
-      finder(x, y+gap, l[x][y+gap])  # right
-
-x = 0
-y = 0
-gap = l[x][y]
-finder(x, y, gap)
-print("Hing")
