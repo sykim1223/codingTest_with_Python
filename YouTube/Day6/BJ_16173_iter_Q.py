@@ -24,22 +24,19 @@ def path_find(x, y):
   while queue:
   #현 좌표의 이동횟수 만큼 이동
     x, y = queue.popleft() #현재 좌표
-    print(x, y)
+
     m = map_info[x][y] #현재 좌표에 적힌 이동횟수
+
     if m == -1:
       return -1
     if m == 0:
       continue
-  # #가능한 이동 경로 확인
-    for i in range(m+1): #이동경우의 수는 m+1만큼 이니까
-  #각 경우에 대해 이동후 좌표 계산
-      nx = x + (i*dx[0]) + ((m-i)*dx[1])
-      ny = y + (i*dy[0]) + ((m-i)*dy[1])   
+  #가능한 이동 경로 확인
+    if x+m < n:
+      queue.append((x+m, y))
+    if y+m < n:
+      queue.append((x, y+m))
  
-  # 이동한 좌표가 범위를 벗어나면 스킵
-      if 0 <= nx < n and 0 <= ny < n:
-        queue.append((nx, ny))
-
   return 0
 
 n = int(input())
@@ -48,13 +45,10 @@ map_info = []
 for i in range(n):
   map_info.append(list(map(int, input().split())))
 
-  #이동좌표_우 하
-dx = [0, 1] #행
-dy = [1, 0] #열
-
 if path_find(0,0) == -1:
   print('HaruHaru')
 else:
   print('Hing')
 
 
+#해당 소스코드는 반복문으로 작성하여 큐를 이용하였음. 문제는 통과하였으나, 목적지까지의 경로만 깔끔하게 출력하지 못 함.
