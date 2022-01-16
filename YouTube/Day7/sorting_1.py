@@ -9,7 +9,7 @@
 #   for j in range(i+1, len(array)):
 #     if array[min_index] > array[j]:
 #       min_index = j
-#   array[i], array[min_index] = array[min_index], array[i] #가장 작은 원소기를 앞으로
+#   array[i], array[min_index] = array[min_index], array[i] #가장 작은 원소를 앞으로
 
 # print(array)
 # ****** ******
