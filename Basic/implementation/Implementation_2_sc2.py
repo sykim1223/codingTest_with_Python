@@ -3,24 +3,6 @@
 # 입력조건)첫번째 줄에 정수 N이 입력(0 <= N <= 23)
 # 출력조건) 모든 경우의 수 출력
 
-# ***소스코드1 ***
-# N = int(input("시각을 입력하세요: "))
-# cnt = 0
-
-
-# for h in range(0, N+1):
-#   if h == 3: 
-#     cnt = cnt + 3600
-#     continue
-#   else:
-#     for m in range(0, 60):
-#         for s in range(0, 60):
-#           if m//10 == 3 or m%10 == 3 or s//10 == 3 or s%10 == 3:
-#             cnt = cnt + 1
-
-# print(f"총 {cnt}회 입니다")
-#******
-
 #***소스코드2***
 h = int(input("시각을 입력하세요: "))
 

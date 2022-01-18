@@ -18,52 +18,28 @@
 # 여행가 A가 최종적으로 도착한 지점의 좌표(X,Y)를 출력하시오.
 
 # *** 소스코드 1 ***
-# N = int(input("공간의 크기를 입력하세요: "))
-# move = input("이동 계획을 입력하세요: ").split()
+N = int(input("공간의 크기를 입력하세요: "))
+move = input("이동 계획을 입력하세요: ").split()
 
-# x, y = 0, 0 # x=행, y=열
+x, y = 0, 0 # x=행, y=열
 
-# #좌 우 상 하 
-# dx = [0, 0, -1, 1]
-# dy = [-1, 1, 0, 0]
-
-# for i in move:
-#   if i == 'L': d=0
-#   elif i == 'R': d=1
-#   elif i == 'U': d=2
-#   else: d=3
-
-#   if 0<= x + dx[d] <5 and 0<= y + dy[d] <5:
-#     x = x + dx[d]
-#     y = y + dy[d]
-
-# x=x+1
-# y=y+1
- 
-# print(f"최종 좌표는 {x} {y}입니다")
-# ******
-
-
-# *** 소스코드 2 ***
-n = int(input("공간의 크기를 입력하세요: "))
-plans = input("이동 계획을 입력하세요: ").split()
-
-x, y = 1, 1
-
-# L R U D에 따른 이동 방향
+#좌 우 상 하 
 dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
-move_types = ['L', 'R', 'U', 'D']
 
-for plan in plans:
-  #이동 후 좌표 구하기
-  for i in range(len(move_types)):
-    if plan == move_types[i]:
-      nx = x+dx[i]
-      ny = y+dy[i]
+for i in move:
+  if i == 'L': d=0
+  elif i == 'R': d=1
+  elif i == 'U': d=2
+  else: d=3
 
-  #공간을 벗어나지 않는 경우, 이동 수행
-  if 0< nx <=n and 0< ny <=n:
-    x, y = nx, ny
+  if 0<= x + dx[d] <5 and 0<= y + dy[d] <5:
+    x = x + dx[d]
+    y = y + dy[d]
 
+x=x+1
+y=y+1
+ 
 print(f"최종 좌표는 {x} {y}입니다")
+# ******
+
