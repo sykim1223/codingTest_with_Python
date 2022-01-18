@@ -1,78 +1,3 @@
-# ****** DFS로 그래프 탐색 예제 ******
-
-#DFS 메서드 정의
-# def dfs(graph, v, visited):
-#   visited[v] = True #시작 노드는 즉시 방문처리
-#   print(v, end=' ')
-#   #현재 노드와 연결된 다른 노드를 재귀적으로 방문
-#   for i in graph[v]:
-#     if not visited[i]:
-#       dfs(graph, i, visited)
-
-
-# #각 노드가 연결된 정보를 표현(2차원 리스트)
-# graph = [
-#   [], #그래프 문제의 첫 인덱스는 일반적으로 '1'임. 따라서 0번 인덱스는 비워두도록 함.
-#   [2, 3, 8],
-#   [1, 7],
-#   [1, 4, 5],
-#   [3, 5],
-#   [3, 4],
-#   [7],
-#   [2, 6, 8],
-#   [1, 7]
-# ]
-
-# #각 노드가 방문된 정보를 표현 (1차원 리스트)
-# visited = [False]*9 #인덱스 0은 사용하지 않기 위해, 일부러 노드보다 하나 더 많은 공간을 할당
-
-# dfs(graph, 1, visited)
-# ****** ******
-
-
-
-# BFS: 너비우선 탐색. 큐 자료구조 이용 ===========================================
-# 각 간선의 가중치가으 동일할 때, 최단 경로 구하기에 사용되기도 함.
-
-# ****** BFS소스코드 예제 ******
-# from collections import deque
-
-# #BFS 메서드 정의
-# def bfs(graph, start, visited):
-#   #큐 구현을 위해 deque 라이브러리 사용
-#   queue = deque([start])
-#   visited[start] = True
-#   #큐가 빌 때까지 복
-#   while queue:
-#     #큐에서 하나의 원소를 뽑아 출력하기
-#     v = queue.popleft()
-#     print(v, end=' ')
-#     #아직 방문하지 않은 인접한 원소들을 큐에 삽입
-#     for i in graph[v]:
-#       if not visited[i]:
-#         queue.append(i)
-#         visited[i] = True
-
-# #각 노드가 연결된 정보를 표현(2차원 리스트)
-# graph = [
-#   [], #그래프 문제의 첫 인덱스는 일반적으로 '1'임. 따라서 0번 인덱스는 비워두도록 함.
-#   [2, 3, 8],
-#   [1, 7],
-#   [1, 4, 5],
-#   [3, 5],
-#   [3, 4],
-#   [7],
-#   [2, 6, 8],
-#   [1, 7]
-# ]
-
-# #각 노드가 방문된 정보를 표현 (1차원 리스트)
-# visited = [False]*9
-
-# bfs(graph, 1, visited)
-# ****** ******
-
-
 
 #[문제1]음료수 얼려 먹기
 # NxM 크기의 얼음 틀이 있다. 구멍이 뚫려 있는 부분은 0, 칸막이가 존재하는 부분은 1로 표시한다. 구멍이 뚫려 있는 부분끼리 상,하,좌,우로 붙어있는 경우, 서로 연결되어 있는 것으로 간주한다.
@@ -94,41 +19,41 @@
 
 # ****** 소스코드 ******
 #DFS로 특정 노드를 방문하고 연결된 모든 노드들도 방문
-# def dfs(x,y):
-#   #주어진 범위를 벗어나는 경우 즉시 종료
-#   if x<=-1 or x>=n or y<=-1 or y>=m:
-#     return
+def dfs(x,y):
+  #주어진 범위를 벗어나는 경우 즉시 종료
+  if x<=-1 or x>=n or y<=-1 or y>=m:
+    return
 
-#   #해당 노드를 아직 방문하지 않았다면
-#   if graph[x][y] == 0:
-#     graph[x][y] = 1
-#     #상하좌우에 대해 재귀적으로 호출
-#     dfs(x-1, y)
-#     dfs(x, y-1)
-#     dfs(x+1, y)
-#     dfs(x, y+1)
-#     return True
+  #해당 노드를 아직 방문하지 않았다면
+  if graph[x][y] == 0:
+    graph[x][y] = 1
+    #상하좌우에 대해 재귀적으로 호출
+    dfs(x-1, y)
+    dfs(x, y-1)
+    dfs(x+1, y)
+    dfs(x, y+1)
+    return True
 
-#   return False #방문이 이미 된 곳이면 이곳에서 만들어지는 아이스크림은 없음을 반환
+  return False #방문이 이미 된 곳이면 이곳에서 만들어지는 아이스크림은 없음을 반환
 
-# n, m = map(int, input("n과 m을 입력하세요: ").split())
+n, m = map(int, input("n과 m을 입력하세요: ").split())
 
-# #2차원 리스트 맵 정보 입력받기
-# graph = []
-# print("맵 정보를 입력하세요: ")
-# for i in range(n):
-#   graph.append(list(map(int, input()))
+#2차원 리스트 맵 정보 입력받기
+graph = []
+print("맵 정보를 입력하세요: ")
+for i in range(n):
+  graph.append(list(map(int, input()))
 
-# print(graph)
-# # 모든 노드에 대해 음료수 채우기
-# result = 0
-# for i in range(n):
-#   for j in range(m):
-#     #현재위치에서 DFS수행 
-#       if dfs(i,j) == True:
-#         result +=1 # result 세는 것도 밖에서 가능
+print(graph)
+# 모든 노드에 대해 음료수 채우기
+result = 0
+for i in range(n):
+  for j in range(m):
+    #현재위치에서 DFS수행 
+      if dfs(i,j) == True:
+        result +=1 # result 세는 것도 밖에서 가능
 
-# print(result)
+print(result)
 # ****** *******
 
 

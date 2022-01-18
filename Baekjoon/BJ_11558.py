@@ -32,7 +32,7 @@ for _ in range(t):
 
   for i in range(n):
     if arr[tmp]== n-1:
-      k = i
+      k = i+1
       break
     elif arr[tmp] != n-1 and arr[tmp] == tmp:
       k = 0

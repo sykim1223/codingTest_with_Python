@@ -1,0 +1,20 @@
+
+# 2. 큐 자료구조: 선입선출 (FIFO) ===================================================#
+# ****** 큐 구현 예제_O(1) ******
+from collections import deque #효율을 위해 반드시 해당 라이브러리 사용!
+
+queue = deque()
+
+queue.append(5)
+queue.append(2)
+queue.append(3)
+queue.append(7)
+queue.popleft()
+queue.append(1)
+queue.append(4)
+queue.popleft()
+
+print(queue) #선입선출
+queue.reverse() #역순으로 바꾸기
+print(queue) # 나중에 들어온 원소부터 출력
+# ****** ******
